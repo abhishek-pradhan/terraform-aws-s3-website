@@ -117,8 +117,8 @@ data "aws_route53_zone" "selected_zone" {
   private_zone = false
 }
 
-# now create subdomain: staging as an A record with Alias to S3 bucket
-resource "aws_route53_record" "staging_a_alias" {
+# now create subdomain as an A record with Alias to S3 bucket
+resource "aws_route53_record" "site_a_alias" {
   zone_id = data.aws_route53_zone.selected_zone.id
   name    = "${var.sub_domain}.${var.domain}"
   type    = "A"
