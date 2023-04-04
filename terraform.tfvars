@@ -9,7 +9,7 @@ project_prefix = "tfc-aws-s3-website"
 aws_region  = "ap-south-1"
 environment = "staging"
 bucket_name = "staging.abhishekpradhan.com"
-domain = "abhishekpradhan.com"
-sub_domain = "staging"
+domain      = "abhishekpradhan.com"
+sub_domain  = "staging"
 
 # AWS access key credentials are already part of TFC Workspace variables as environment variables 
