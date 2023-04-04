@@ -5,9 +5,11 @@
 # common variables
 project_prefix = "tfc-aws-s3-website"
 
-# workspace specific variables - move these to TFC Workspace variables
+# workspace specific variables - we should move these to TFC Workspace variables
 aws_region  = "ap-south-1"
 environment = "staging"
 bucket_name = "staging.abhishekpradhan.com"
+domain = "abhishekpradhan.com"
+sub_domain = "staging"
 
 # AWS access key credentials are already part of TFC Workspace variables as environment variables 

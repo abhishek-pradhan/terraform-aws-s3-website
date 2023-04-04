@@ -110,6 +110,25 @@ resource "aws_s3_object" "object" {
   content_type = "text/html"
 }
 
+# Route53 public hosted zone to point to S3 static website endpoint
+# Here I already have created public hosted zone with domain=abhishekpradhan.com, hence just getting it via data & not creating it 
+data "aws_route53_zone" "selected_zone" {
+  name         = var.domain
+  private_zone = false
+}
+
+# now create subdomain: staging as an A record with Alias to S3 bucket
+resource "aws_route53_record" "staging_a_alias" {
+  zone_id = data.aws_route53_zone.selected_zone.id
+  name    = "${var.sub_domain}.${var.domain}"
+  type    = "A"
+
+  alias {
+    name                   = aws_s3_bucket_website_configuration.site_config.website_domain
+    zone_id                = aws_s3_bucket.site.hosted_zone_id
+    evaluate_target_health = true
+  }
+}
 
 
 # todo: TLS certificate to be uploaded to us-east-1 ACM, this cert will be used in CloudFront distro
